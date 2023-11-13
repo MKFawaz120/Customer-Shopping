@@ -1,0 +1,26 @@
+--show all dataset
+select * from  customer_shopping_data
+
+
+--show how each mall how many customer visit
+select shopping_mall, count(customer_id) as CN from customer_shopping_data
+group by  shopping_mall 
+order by count(customer_id)  desc
+
+--number of each gender and age 
+select gender, count(customer_id) as CN from customer_shopping_data
+group by  gender 
+order by count(customer_id)  desc
+
+
+
+select  count (customer_id), 
+Case
+when count( age) >= 60 then 'above 60'
+when count( age) >= 50 then 'above 50'
+when count( age) >= 40 then 'above 40'
+when count( age) >= 30 then 'above 30'
+when count( age) >= 20 then 'above 20'
+end as
+age_dentefir
+from customer_shopping_data
